@@ -35,7 +35,7 @@ def optimize_prompt(api_key, target_model, user_intent):
         url="https://openrouter.ai/api/v1/chat/completions",
         headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
         json={
-            "model": "meta-llama/llama-3.1-405b-instruct",
+            "model": "openrouter/free",
             "messages": [{"role": "system", "content": "You are a prompt engineer."},
                          {"role": "user", "content": system_prompt}]
         }
@@ -53,7 +53,7 @@ col1, col2 = st.columns([1, 2])
 
 with col1:
     api_key = st.text_input("OpenRouter API Key:", type="password")
-    target_model = st.selectbox("Target Model:", ["Claude (Anthropic)", "GPT-4o/o1", "Llama 3/3.1"])
+    target_model = st.selectbox("Target Model:", ["Claude (Anthropic)", "GPT-4o/o1", "Llama 3/3.1","GEMINI FLASH","GEMINI PRO","GEMINI"])
     intent = st.text_area("Define the Purpose:", placeholder="e.g. Write a script that...")
     
     if st.button("Generate Optimized Prompt"):
